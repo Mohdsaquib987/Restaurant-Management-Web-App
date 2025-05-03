@@ -1,0 +1,180 @@
+.chefcards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:3rem;
+    
+}
+.chef-img{
+    height: 18rem;
+    width: 13rem;
+    padding: 0.5rem;
+    border-radius: 16px;
+    
+}
+.ourchefs h1{
+    color: #E67F0D;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    font-size: 8vw;
+    font-weight: 400;
+    text-align: center;
+}
+.card h3{
+    color:#475B5A;
+}
+.card{
+    background-color: #D8E1E9;
+    /* border: 0px solid black; */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    transform: rotate(-5deg);
+}
+
+
+.card:hover {
+    transform: rotate(0deg) translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+  }
+  
+
+  
+  .dishes {
+    
+    justify-content: space-between;
+    margin:3rem;
+    margin-top: 7rem;
+    /* gap: 20px; */
+    /* overflow: hidden; Prevent overflow during animation */
+  }
+  .dishes h1{
+    /* width: 3rem; */
+    /* height: 3rem; */
+    color: #E67F0D;
+    text-shadow: 4px 6px 10px rgba(0, 0, 0, 0.3);
+    font-size: 7vw;
+    font-style: italic;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 10rem;
+
+  }
+
+  .topdishes{
+    /* gap:1rem; */
+    display: flex;
+    /* flex-direction: row; */
+    justify-content:space-evenly;
+    flex-wrap: wrap;
+    background-color: #BAC2FF;
+    border-radius: 5px;
+    
+  }
+
+  .dish img{
+    height: 18rem;
+    width: 17rem;
+    padding: 0.5rem;
+    border-radius: 16px;
+    
+    
+    
+}
+
+.dish{
+  
+  position: relative;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  top: -6rem;
+  padding: 0.5rem;
+  border-radius: 16px;
+  background-color:#fff;
+  border: 2px solid #E67F0D;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+  
+}
+.dish h3{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #475B5A;
+}
+@keyframes slideLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+.dish:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transform: translateY(-10px);
+}
+#dish1{
+  animation: slideLeft 0.8s ease-in-out;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+ 
+
+}
+
+  
+#dish2{
+  animation: slideRight 0.8s ease-in-out;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+@media screen and (max-width:770px){
+  .topdishes{
+    background-color: #ffffff;
+  }
+}
+@media screen and (max-width:500px){
+  .dish img{
+    height: 13rem;
+    width: 10rem;      
+}
+  #dish1,#dish2{
+    animation: none;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease-in-out;
+  }
+  .dish:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transform: translateY(-10px);
+  }
+  .topdishes{
+    background-color: #ffffff;
+    
+  }
+
+}
+/* h1 span{
+  color: red;
+} */

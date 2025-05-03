@@ -1,0 +1,78 @@
+html{scroll-padding-top: 120px;}
+.homecontainer{
+    height: 35vw;
+    margin: 5rem 1rem;
+    background: url('/food.jpg')no-repeat;
+    background-size: contain;
+    background-size: cover;
+    position: relative;
+    border-radius: 1rem;
+}
+#home {
+    scroll-margin-top: 120px; /* Set this to your navbar height */
+  }
+.content{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.5vw;
+    max-width: 80%;
+    bottom: 10%;
+    left: 6vw;
+    animation: fadein 3s;
+}
+.content h2{
+    font-weight: 500;
+    color: #ffffff;
+    font-size: max(4.5vw,22px);
+}
+.content p{
+    color: #ffffff;
+    font-size: 1.4vw;
+}
+.content button{
+    border:none;
+    color:orange;
+    font-weight: 500;
+    padding: 1vw 2.3vw;
+    background-color: #ffffff;
+    font-size: max(1.3vw,13px);
+    border-radius: 50px;
+    /* border: 4px solid orange; */
+    cursor: pointer;
+    transition: all 0.13s ease-in-out;
+    position: relative;
+
+}
+button:active {
+    
+    transform: scale(0.97) translateY(2px);
+    background-color: orange;
+    color: #ffffff;
+  }
+
+@media  screen and (max-width:500px){
+    .homecontainer{
+        height: 50vw;
+        margin-top: 7rem;
+    }
+    .content h2{
+        font-size: medium;
+        line-height: 1.4;
+    }
+    .content p{
+        color: #ffffff;
+        font-size: 2vw;
+    }
+
+    
+}
+@media  screen and (max-width:300px){
+    .content h2{
+        font-size: medium;
+    }
+}
+
+
+
