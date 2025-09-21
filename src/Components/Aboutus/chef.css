@@ -85,8 +85,7 @@
     padding: 0.5rem;
     border-radius: 16px;
     
-    
-    
+
 }
 
 .dish{
@@ -156,9 +155,12 @@
 }
 @media screen and (max-width:500px){
   .dish img{
-    height: 13rem;
+    height: 12rem;
     width: 10rem;      
 }
+  #dish2{
+    width: 15rem; 
+  }
   #dish1,#dish2{
     animation: none;
     margin-top: 0.5rem;

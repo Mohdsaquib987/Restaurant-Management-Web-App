@@ -1,64 +1,110 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { FaStar } from 'react-icons/fa';
 import './feedback.css';
-// import ReactStars from 'react-rating-stars-component';
+
+const colors = {
+  orange: '#FFBA5A',
+  grey: '#a9a9a9',
+};
 
 const Feedback = () => {
-  const [feedback, setFeedback] = useState('');
-  const [rating, setRating] = useState(0);
+  const [currentValue, setCurrentValue] = useState(0);
+  const [hoverValue, setHoverValue] = useState(undefined);
+  const [feedbackText, setFeedbackText] = useState('');
   const [submissions, setSubmissions] = useState([]);
+
+  // Fetch stored submissions from localStorage
+  useEffect(() => {
+    const savedFeedback = JSON.parse(localStorage.getItem('feedbackData')) || [];
+    setSubmissions(savedFeedback);
+  }, []);
+
+  const handleClick = (value) => {
+    setCurrentValue(value);
+  };
+
+  const handleMouseOver = (newHoverValue) => {
+    setHoverValue(newHoverValue);
+  };
+
+  const handleMouseLeave = () => {
+    setHoverValue(undefined);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!feedback || rating === 0) {
-      alert('Please enter feedback and select a rating.');
-      return;
+
+    // Only save feedback if there's text and a rating
+    if (!feedbackText || currentValue === 0) {
+      return; // Do nothing if conditions aren't met
     }
 
     const newFeedback = {
-      message: feedback,
-      rating,
-      date: new Date().toLocaleString(),
+      message: feedbackText,
+      rating: currentValue,
     };
 
-    setSubmissions([...submissions, newFeedback]);
-    setFeedback('');
-    setRating(0);
+    // Update the feedback list
+    const updatedSubmissions = [...submissions, newFeedback];
+    setSubmissions(updatedSubmissions);
+
+    // Save feedback in localStorage
+    localStorage.setItem('feedbackData', JSON.stringify(updatedSubmissions));
+
+    // Reset the form
+    setFeedbackText('');
+    setCurrentValue(0);
+  };
+
+  const handleClearFeedback = () => {
+    // Clear feedback in state
+    setSubmissions([]);
+    
+    // Clear feedback in localStorage
+    localStorage.removeItem('feedbackData');
   };
 
   return (
     <div className="feedback-container">
-      
+      <div className='reiew'>
+        <h2>Give ratings to our restaurant</h2>
+        <div className="stars">
+          {Array(5).fill(0).map((_, index) => (
+            <FaStar
+              key={index}
+              size={24}
+              onClick={() => handleClick(index + 1)}
+              onMouseOver={() => handleMouseOver(index + 1)}
+              onMouseLeave={handleMouseLeave}
+              color={(hoverValue || currentValue) > index ? colors.orange : colors.grey}
+              className="star-icon"
+            />
+          ))}
+      </div>
+      <textarea
+        placeholder="What's your experience?"
+        className="textarea"
+        value={feedbackText}
+        onChange={(e) => setFeedbackText(e.target.value)}
+      />
+      <button className="submit-button" onClick={handleSubmit}>Submit</button>
+      </div>
 
-      <form onSubmit={handleSubmit} className="feedback-form">
-        <h2 className="feedback-title">Feedback</h2>
-        <textarea
-          className="feedback-textarea"
-          rows="4"
-          placeholder="Your feedback..."
-          value={feedback}
-          onChange={(e) => setFeedback(e.target.value)}
-        />
-
-        <div className="feedback-rating">
-          {/* Replace this with your rating component */}
-          {/* <ReactStars ... /> */}
-        </div>
-
-        <button type="submit" className="feedback-button">
-          Submit
-        </button>
-      </form>
-
+      {/* Display previous feedback */}
       {submissions.length > 0 && (
         <div className="feedback-list">
-          <h3 className="feedback-subtitle">Previous Feedback</h3>
-          {submissions.map((item, index) => (
+          <h3>Previous Feedback</h3>
+          {submissions.map((feedback, index) => (
             <div key={index} className="feedback-card">
-              <div className="feedback-rating-display">Rating: ⭐ {item.rating}</div>
-              <p>{item.message}</p>
-              <div className="feedback-date">{item.date}</div>
+              <p><strong>Rating: </strong>{'⭐'.repeat(feedback.rating)}</p>
+              <p>{feedback.message}</p>
             </div>
           ))}
+          
+          {/* Clear feedback button appears only when there are submissions */}
+          <button className="clear-button" onClick={handleClearFeedback}>
+            Clear Feedback
+          </button>
         </div>
       )}
     </div>

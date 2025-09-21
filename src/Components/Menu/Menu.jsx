@@ -74,8 +74,8 @@ function Menu({ searchQuery }) {
         <a href="#veg">Veg</a>
         <a href="#nonveg">Non-Veg</a>
         <a href="#breads">Breads</a>
-        <a href="#drinks">Drinks</a>
-        <a href="#desert">Desert</a>
+        <a href="#drinks">Beverages</a>
+        <a href="#desert">Desserts</a>
       </div>
 
       {/* Veg Section */}
@@ -117,7 +117,7 @@ function Menu({ searchQuery }) {
       {/* Drinks Section */}
       {filteredDrinks.length > 0 && (
         <div className="menu-grid" id="drinks">
-          <h2 className="Heading">Drinks</h2>
+          <h2 className="Heading">Beverages</h2>
           <div className="dishescontainer">
             {filteredDrinks.map((item) => (
               <MenuItemCard key={item.id} {...item} addItemToCart={() => addItemToCart(item)} />
@@ -129,7 +129,7 @@ function Menu({ searchQuery }) {
       {/* Desert Section */}
       {filteredDeserts.length > 0 && (
         <div className="menu-grid" id="desert">
-          <h2 className="Heading">Deserts</h2>
+          <h2 className="Heading">Desserts</h2>
           <div className="dishescontainer">
             {filteredDeserts.map((item) => (
               <MenuItemCard key={item.id} {...item} addItemToCart={() => addItemToCart(item)} />

@@ -75,7 +75,7 @@ export const vegItems = [
   { id: 9, name: "Gobi Manchurian", price: 135, image: image9 },
   { id: 10, name: "Plain Rice", price: 90, image: image10 },
   { id: 11, name: "Rajma", price: 130, image: image11 },
-  { id: 12, name: "Samosa", price: "₹25 per/piece", image: image12 },
+  { id: 12, name: "Samosa", price: "25 per/piece", image: image12 },
   { id: 13, name: "Shahi Paneer", price: 160, image: image13 },
   { id: 14, name: "Baingan Bharta", price: 115, image: image14 },
   { id: 15, name: "Dosa", price: 100, image: image15 },

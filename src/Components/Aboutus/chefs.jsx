@@ -48,7 +48,7 @@ function Chefs() {
                     </div>
                 </div>
                 <div className='dishes'>
-                  <h1><span>T</span>op Dishes</h1>
+                  <h1>Top Dishes</h1>
 
                   <div className="topdishes">
                     <Dish id="dish1" imgSrc={image1} name="Paneer-Butter-Masala" />

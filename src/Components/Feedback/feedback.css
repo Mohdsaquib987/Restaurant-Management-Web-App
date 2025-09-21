@@ -1,82 +1,112 @@
-.feedback-container{
-    margin-top: 5rem;
-    background-color: blue;
-    height: 100px;
-    scroll-margin-top: 100px;
-}
-
-  
-.feedback-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
-.feedback-form {
-
-    margin: auto;
+.feedback-container {
+  background-color: #ACDDDE;
+  min-height: 100vh; 
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  width: 30rem;
   align-items: center;
-
+  padding: 20px;
+}
+.reiew{
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  
+}
+.reiew:hover{
+  outline: 2px solid orange;
+}
+.feedback-container h2{
+  color: orange;
 }
 
-.feedback-textarea {
-  width: 100%;
-  border: 1px solid #ccc;
+.stars {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0;
+}
+
+.star-icon {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.textarea {
+  border: 1px solid #a9a9a9;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px 0;
+  min-height: 100px;
+  width: 500px;
+}
+
+.submit-button {
+  border: 1px solid #a9a9a9;
+  font-weight: 700;
+  font-size: large;
   border-radius: 6px;
-  padding: 0.5rem;
-  resize: vertical;
-  font-size: 1rem;
+  width: 12rem;
+  padding: 10px;
+  cursor: pointer;
+  color: #fff;
+  background-color: orange;
+
 }
 
-/* .feedback-rating {
-  /* Placeholder for rating component */
 
 
-.feedback-button {
-  background-color: #3b82f6;
+.feedback-list {
+  margin-top: 2rem;
+  
+  width: calc(100% - 10rem);
+}
+.feedback-list h3{
+  font-size: 2rem;
+}
+
+.feedback-card {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.feedback-card p {
+  margin: 0.5rem 0;
+}
+
+.feedback-card small {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+@media screen and (max-width: 768px){
+  .textarea{
+    width: 100%;
+  }
+  .feedback-list{
+    width: 100%;
+  }
+}
+
+.clear-button {
+  background-color: #ef4444;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
-}
-
-.feedback-button:hover {
-  background-color: #2563eb;
-}
-
-.feedback-list {
-  margin-top: 1.5rem;
-}
-
-.feedback-subtitle {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.feedback-card {
-  border: 1px solid #e5e7eb;
-  padding: 0.75rem;
-  border-radius: 6px;
-  margin-bottom: 0.75rem;
-  background-color: #f9fafb;
-}
-
-.feedback-rating-display {
-  font-weight: 500;
-  margin-bottom: 0.25rem;
-}
-
-.feedback-date {
-  font-size: 0.875rem;
-  color: #6b7280;
-  margin-top: 0.25rem;
-}
   
+  
+ 
+}
+
+.clear-button:hover {
+  background-color: #dc2626;
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./cartsummary.css";
 
 const CartSummary = ({
@@ -9,6 +9,10 @@ const CartSummary = ({
   toggleCartVisibility,
   orderPlaced,
 }) => {
+  const [orderName, setOrderName] = useState("");
+  const [mobileNo, setMobileNo] = useState("");
+  const [tableNo, setTableNo] = useState("");
+
   const getPriceValue = (price) => {
     if (typeof price === "string") {
       return parseInt(price.replace(/[^\d]/g, ""));
@@ -24,12 +28,21 @@ const CartSummary = ({
     return total + price * (item.quantity || 1);
   }, 0);
 
-  const GST_RATE = 0.18; 
+  const GST_RATE = 0.18;
   const gstAmount = totalAmount * GST_RATE;
   const totalWithGST = totalAmount + gstAmount;
 
+  const isFormValid = orderName.trim() !== "" && mobileNo.trim() !== "" && tableNo.trim() !== "";
+
+  const handlePlaceOrder = () => {
+    if (isFormValid) {
+      onPlaceOrder(); // call parent callback
+    } else {
+      alert("Please fill in all fields before placing the order.");
+    }
+  };
+
   if (!cartVisible) {
-    // if cart is hidden, just show Show Cart button
     return (
       <div className="show-cart-button">
         <button onClick={toggleCartVisibility}>Show Cart</button>
@@ -47,12 +60,12 @@ const CartSummary = ({
         <div className="items-scroll-container">
           <ul>
             {selectedItems.map((item, index) => (
-              <li key={index} >
+              <li key={index}>
                 <span>{item.name} x{item.quantity}</span>
-                <span className="price" style={{marginLeft:"0.5rem"}}>
+                <span className="price" style={{ marginLeft: "0.5rem" }}>
                   ₹{(getPriceValue(item.price) * item.quantity).toFixed(2)}
                 </span>
-                <button id="minus" onClick={() => onRemoveItem(item.id)}>-</button >
+                <button id="minus" onClick={() => onRemoveItem(item.id)}>-</button>
               </li>
             ))}
           </ul>
@@ -65,15 +78,33 @@ const CartSummary = ({
         <p>Subtotal: ₹{totalAmount.toFixed(2)}</p>
         <p>GST (18%): ₹{gstAmount.toFixed(2)}</p>
         <h3>Total: ₹{totalWithGST.toFixed(2)}</h3>
-        <input type="text" name="" id=""  placeholder="Enter order name"/>
-        <input type="tel" placeholder="Enter mobile no" />
-        <input type='number'  placeholder="Enter your table no:"/>
+        <input
+          type="text"
+          placeholder="Enter order name"
+          value={orderName}
+          onChange={(e) => setOrderName(e.target.value)}
+        />
+        <input
+          type="tel"
+          placeholder="Enter mobile no"
+          value={mobileNo}
+          onChange={(e) => setMobileNo(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Enter your table no:"
+          value={tableNo}
+          onChange={(e) => setTableNo(e.target.value)}
+        />
       </div>
 
-      {/* Buttons */}
       <div className="cart-actions">
         {!orderPlaced && (
-          <button className="place-order-btn" onClick={onPlaceOrder}>
+          <button
+            className="place-order-btn"
+            onClick={handlePlaceOrder}
+            disabled={!isFormValid}
+          >
             Place Order
           </button>
         )}
