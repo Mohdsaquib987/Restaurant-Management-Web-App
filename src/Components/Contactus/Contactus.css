@@ -166,6 +166,7 @@
 }
 .btn-send:hover {
   background-color: #3a3355;
+  outline: #3a3355;
   color: white;
 }
 .btn-send:active{
